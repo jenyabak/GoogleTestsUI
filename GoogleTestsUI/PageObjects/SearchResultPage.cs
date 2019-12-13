@@ -13,12 +13,6 @@
 
         public override string Title { get => WebDriver.Title; }
 
-        public SearchResultPage()
-        {
-            PageFactory.InitElements(WebDriver, this);
-        }
-
-
         [FindsBy(How = How.XPath, Using = "//div[@class='g']")]
         public IList<IWebElement> SearchResults { get; set; }
 

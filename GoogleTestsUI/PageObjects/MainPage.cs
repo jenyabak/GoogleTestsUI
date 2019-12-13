@@ -14,7 +14,7 @@
         {
             Title = "Google";
             URL = GetSetting("baseURL");
-            PageFactory.InitElements(WebDriver, this);
+            
         }
 
         [FindsBy(How = How.XPath, Using = "//div/input[@type='text']")]
