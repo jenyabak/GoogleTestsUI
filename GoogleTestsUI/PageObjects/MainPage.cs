@@ -22,10 +22,10 @@
 
 
         [FindsBy(How = How.XPath, Using = "//input[@class='gNO89b']")]
-        private IList<IWebElement> searchButtons { get; set; }
+        private IList<IWebElement> SearchButtons { get; set; }
         public IWebElement SearchButton
         {
-            get => WaitForClikcable(searchButtons.Where(x => x.Displayed).First());
+            get => WaitForClikcable(SearchButtons.Where(x => x.Displayed).First());
         }
 
         public override bool PageLoadedCorrectly()

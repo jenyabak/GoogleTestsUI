@@ -12,11 +12,11 @@
         {
             var page = Activator.CreateInstance(typeof(T));
             string url = (page as BasePage).URL;
-            Func<bool> TryOpenPage = () =>
+            bool TryOpenPage()
             {
                 webDriver.Navigate().GoToUrl(url);
                 return (page as BasePage).PageLoadedCorrectly();
-            };        
+            }
             WaitUntil(x => TryOpenPage(), 1000, "Can't open page: " + page.ToString() + " url: " + url);
             return (T)page;
         }
