@@ -10,6 +10,11 @@ namespace GoogleTestUI
 
     public class BaseTest
     {
+        [SetUp]
+        public void SetUp()
+        {
+            GetDriver();
+        }
 
         [TearDown]
         public void TearDown()
@@ -25,24 +30,6 @@ namespace GoogleTestUI
                 WebDriver.Quit();
                 WebDriver = null;
             }
-        }
-
-        [SetUp]
-        public void SetUp()
-        {
-            GetDriver();
-        }
-
-        [OneTimeSetUp]
-        public void TestInt()
-        {
-
-        }
-
-        [OneTimeTearDown]
-        public void OneTimeTearDown()
-        {
-
         }
 
     }

@@ -2,11 +2,7 @@
 {
     using OpenQA.Selenium.Support.PageObjects;
     using OpenQA.Selenium;
-    using static GoogleTestUI.WebDriverContainer;
     using static GoogleTestUI.CommonUtils;
-    using static GoogleTestUI.Waiter;
-    using System.Collections.Generic;
-    using System.Linq;
 
     public class MainPage : BasePage
     {
@@ -20,13 +16,8 @@
         [FindsBy(How = How.XPath, Using = "//div/input[@type='text']")]
         public IWebElement SearchField { get; set; }
 
-
-        [FindsBy(How = How.XPath, Using = "//input[@class='gNO89b']")]
-        private IList<IWebElement> SearchButtons { get; set; }
-        public IWebElement SearchButton
-        {
-            get => WaitForClikcable(SearchButtons.Where(x => x.Displayed).First());
-        }
+        [FindsBy(How = How.XPath, Using = "//input[@class='gNO89b' and not(ancestor::div[contains(@style,'display:none')]) and not(ancestor::div[contains(@style,'display: none')])]")]
+        public IWebElement SearchButton { get; set; }
 
         public override bool PageLoadedCorrectly()
         {

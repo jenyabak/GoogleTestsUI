@@ -5,18 +5,13 @@
 
     public abstract class BasePage
     {
-
-        private string uRL;
-        private string title;
-
         protected BasePage()
         {
             PageFactory.InitElements(WebDriver, this);
         }
 
-        public string PageSource { get => WebDriver.PageSource; }
-        public virtual string URL { get => uRL; set => uRL = value; }
-        public virtual string Title { get => title; set => title = value; }
+        public virtual string URL { get; set; }
+        public virtual string Title { get; set; }
 
         public virtual bool PageLoadedCorrectly()
         {

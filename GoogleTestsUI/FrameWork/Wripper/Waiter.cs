@@ -3,9 +3,7 @@
     using System;
     using OpenQA.Selenium;
     using OpenQA.Selenium.Support.UI;
-    using static WebDriverContainer;
     using static CommonUtils;
-
 
     public class Waiter
     {
@@ -26,21 +24,21 @@
             return input;
         }
 
-        public static void WaitUntil(Func<bool, bool> condition, int pollingInterval = 0, string message = "")
-        {
-            WaitUntil(condition, true, pollingInterval, message);
-        }
-
         public static IWebElement WaitForClikcable(IWebElement webElement)
         {
-            WebDriverWait WebDriverWaiter(int timeout = 0)
+            bool isClickable()
             {
-                if (timeout == 0) timeout = defaultTimeout;
-                return new WebDriverWait(GetDriver(), TimeSpan.FromSeconds(timeout));
+                try
+                {
+                   return webElement.Displayed && webElement.Enabled;
+                }
+                catch
+                {
+                   return false;
+                }                
             }
+            return WaitUntil(x => isClickable(), webElement, 1000, "Element is not become clikable in default timoute");
 
-            return WebDriverWaiter().Until(ExpectedConditions.ElementToBeClickable(webElement));
         }
-
     }
 }

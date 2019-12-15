@@ -9,18 +9,18 @@
     public class Search : BaseTest
     {
         [TestCase("Selenium IDE export to C#", "Selenium IDE", 4)]
-        [TestCase("Selenium IDE xxx", "Automated website testing", 1)]
+        [TestCase("Selenium IDE C#", "Code Export in Selenium IDE",4)]
         public void SearchText(string textToSearch, string expectedResult, int searchLineNumber)
         {
-            //Arrange
+            // Arrange
             MainPage mainPage = WebDriver.GetPage<MainPage>();
             SearchResultPage searchResultPage = new SearchResultPage();
 
-            //Action
+            // Action
             mainPage.SearchField.SendKeys(textToSearch);
             mainPage.SearchButton.Click();
 
-            //Assert
+            // Assert
             string actualResult = searchResultPage.SearchResults[searchLineNumber - 1].Text;
             Assert.That(actualResult.Contains(expectedResult), $"{actualResult} does not contains {expectedResult}");
 
