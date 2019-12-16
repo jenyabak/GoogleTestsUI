@@ -42,7 +42,7 @@
         private T WaitUntil<T>(Func<T, bool> condition)
         {
             if (Message == "") Message = condition.ToString() + " did not happened in defaultTimeout: " + defaultTimeout.ToString();
-            if (ObjectToReturn == null) ObjectToReturn = CurentPage.ActiveWebElement;
+            if (ObjectToReturn == null) ObjectToReturn = CurrentPage.ActiveWebElement;
             IWait<T> wait = new DefaultWait<T>((T)ObjectToReturn)
             {
                 Timeout = TimeSpan.FromSeconds(WebTimeoutElement),

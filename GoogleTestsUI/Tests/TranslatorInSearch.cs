@@ -2,7 +2,7 @@
 {
     using NUnit.Framework;
     using static WebDriverContainer;
-    using static CurentPage;
+    using static CurrentPage;
 
     [TestFixture]
     public class TranslatorInSearch : BaseTest

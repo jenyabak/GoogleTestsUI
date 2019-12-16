@@ -4,7 +4,7 @@
     using static GoogleTestUI.Wait;
     using OpenQA.Selenium;
 
-    public class CurentPage : BasePage
+    public class CurrentPage : BasePage
     {
         public static new string URL { get; set; }
         public static new string Title { get; set; }
