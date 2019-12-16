@@ -10,7 +10,6 @@
 
     public class CommonUtils
     {
-
         private static readonly CultureInfo CultureInformation = CultureInfo.InvariantCulture;
         public static readonly string BaseDirectory = AppDomain.CurrentDomain.BaseDirectory;
         public static TestAdapter CurrentTest => CurrentContext.Test;
@@ -24,7 +23,7 @@
             {
                 directory = Directory.CreateDirectory($"{testResultFolder}\\{path}");
             }
-            string fileName = directory.FullName +  $"{DateTime.Now.ToString("yyyy-MM-dd_HH_mm_ss")}.jpeg";
+            string fileName = directory.FullName + $"{DateTime.Now.ToString("yyyy-MM-dd_HH_mm_ss")}.jpeg";
 
             Screenshot ss = ((ITakesScreenshot)GetDriver()).GetScreenshot();
             ss.SaveAsFile(fileName, ScreenshotImageFormat.Jpeg);
@@ -39,6 +38,6 @@
         public static int GetIntSetting(string setting)
         {
             return int.Parse(ConfigurationManager.AppSettings.Get(setting));
-        }       
+        }
     }
 }

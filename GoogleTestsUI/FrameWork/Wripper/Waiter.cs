@@ -12,9 +12,9 @@
         public static readonly int pollingInterval = GetIntSetting("pollingInterval");
 
         public object ObjectToReturn = null;
-        public int WebTimeoutElement = GetIntSetting("defaultTimeout");
-        public int PollingInterval = GetIntSetting("pollingInterval");
-        public Type IgnoreExceptionType  = null;
+        public int WebTimeoutElement = defaultTimeout;
+        public int PollingInterval = pollingInterval;
+        public Type IgnoreExceptionType = null;
         public string Message = "";
 
 
@@ -23,7 +23,7 @@
             Func<object, bool> func = (x) => condition();
             var result = WaitUntil(func);
             if (result == null) return false;
-            else return true;                      
+            else return true;
         }
 
         public IWebElement Until(Func<IWebElement, bool> condition, IWebElement webElement)
@@ -38,7 +38,6 @@
             return WaitUntil(condition);
         }
 
-
         private T WaitUntil<T>(Func<T, bool> condition)
         {
             if (Message == "") Message = condition.ToString() + " did not happened in defaultTimeout: " + defaultTimeout.ToString();
@@ -52,9 +51,9 @@
             if (IgnoreExceptionType != null) wait.IgnoreExceptionTypes(IgnoreExceptionType);
             try
             {
-               wait.Until(condition);
+                wait.Until(condition);
             }
-            catch(TimeoutException)
+            catch (TimeoutException)
             {
                 return default(T);
             }

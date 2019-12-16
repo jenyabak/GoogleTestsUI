@@ -6,7 +6,6 @@
 
     public class WebDriverContainer
     {
-
         public static IWebDriver WebDriver = null;
 
         public static IWebDriver GetDriver(DriverOptions driverOptions = null)
@@ -19,7 +18,6 @@
                 WebDriver = new ChromeDriver((ChromeOptions)driverOptions);
                 WebDriver.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(Wait.defaultTimeout);
             }
-
             return WebDriver;
         }
 

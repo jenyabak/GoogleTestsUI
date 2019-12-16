@@ -39,7 +39,7 @@
             private IList<IWebElement> translateFieldLangSelectors { get; set; }
             public IWebElement LangFromSelector
             {
-                get =>  translateFieldLangSelectors[0];
+                get => translateFieldLangSelectors[0];
             }
 
             public IWebElement LangToSelector

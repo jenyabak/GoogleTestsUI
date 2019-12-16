@@ -22,7 +22,7 @@ namespace GoogleTestUI
             var testStatus = CurrentContext.Result.Outcome.Status;
             if (testStatus == TestStatus.Failed)
             {
-                TakeScreenshot();    
+                TakeScreenshot();
             }
 
             if (WebDriver != null)

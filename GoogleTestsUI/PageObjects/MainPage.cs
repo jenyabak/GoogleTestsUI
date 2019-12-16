@@ -9,7 +9,7 @@
         public MainPage()
         {
             Title = "Google";
-            URL = GetSetting("baseURL");            
+            URL = GetSetting("baseURL");
         }
 
         [FindsBy(How = How.XPath, Using = "//div/input[@type='text']")]

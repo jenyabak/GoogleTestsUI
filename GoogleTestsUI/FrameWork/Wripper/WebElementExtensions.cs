@@ -14,7 +14,6 @@
                 Message = message,
                 PollingInterval = pollingInterval
             };
-
             int textLenth1 = 0, textLenth2, diff;
             bool isTextLengthNotChanged()
             {
@@ -33,7 +32,6 @@
                 PollingInterval = 1000,
                 Message = message,
             };
-
             bool Click()
             {
                 var waitСondition = new Wait()
@@ -55,18 +53,6 @@
                 }
             }
             wait.Until(() => Click());
-        }
-
-        private static IWebElement WaiteForClicable(this IWebElement webElement)
-        {
-            var waiter = new Wait()
-            {
-                ObjectToReturn = webElement,
-                PollingInterval = 300,
-            };
-
-            return waiter.Until(x => x.Displayed && x.Enabled, webElement);
-
         }
     }
 }
