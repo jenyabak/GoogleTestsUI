@@ -50,6 +50,7 @@
     <Compile Include="FrameWork\Wripper\WebDriverExtensions.cs" />
     <Compile Include="FrameWork\Wripper\WebElementExtensions.cs" />
     <Compile Include="PageObjects\BasePage.cs" />
+    <Compile Include="PageObjects\CurentPage.cs" />
     <Compile Include="PageObjects\MainPage.cs" />
     <Compile Include="PageObjects\SearchResultPage.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

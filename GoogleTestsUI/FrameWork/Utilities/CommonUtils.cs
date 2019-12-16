@@ -39,8 +39,6 @@
         public static int GetIntSetting(string setting)
         {
             return int.Parse(ConfigurationManager.AppSettings.Get(setting));
-        }
-
-       
+        }       
     }
 }

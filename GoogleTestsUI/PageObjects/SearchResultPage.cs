@@ -3,7 +3,6 @@
     using OpenQA.Selenium.Support.PageObjects;
     using OpenQA.Selenium;
     using static GoogleTestUI.WebDriverContainer;
-    using static GoogleTestUI.Waiter;
     using System.Collections.Generic;
     using System.Linq;
 
@@ -33,19 +32,19 @@
             private IWebElement translatedField { get; set; }
             public IWebElement TranslatedField
             {
-                get => translatedField.WaitForElementTextNotChanged();
+                get => translatedField.WaitForElementTextLenthNotChanged();
             }
 
             [FindsBy(How = How.XPath, Using = "//span[contains(@class,'DQEUec ')]")]
             private IList<IWebElement> translateFieldLangSelectors { get; set; }
             public IWebElement LangFromSelector
             {
-                get => WaitForClikcable(translateFieldLangSelectors[0]);
+                get =>  translateFieldLangSelectors[0];
             }
 
             public IWebElement LangToSelector
             {
-                get => WaitForClikcable(translateFieldLangSelectors[1]);
+                get => translateFieldLangSelectors[1];
             }
 
             [FindsBy(How = How.XPath, Using = "//input[contains(@id,'list-search-box')]")]
@@ -59,7 +58,7 @@
             private IList<IWebElement> foundLang { get; set; }
             public IWebElement FoundLang
             {
-                get => WaitForClikcable(foundLang.Where(x => x.Displayed).First());
+                get => foundLang.Where(x => x.Displayed).First();
             }
         }
     }

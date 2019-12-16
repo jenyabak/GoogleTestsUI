@@ -2,7 +2,7 @@
 {
     using NUnit.Framework;
     using static WebDriverContainer;
-
+    using static CurentPage;
 
     [TestFixture]
     public class TranslatorInSearch : BaseTest
@@ -18,20 +18,20 @@
 
             // Gettin translator via search
             mainPage.SearchField.SendKeys("translate");
-            mainPage.SearchButton.Click();
+            mainPage.SearchButton.ClickAndCheck(() => TitleChanged());
 
             // Send text to translate
             TaranslatorOnSearchResultPage.TranslateField.SendKeys(textToTranslate);
 
             // Select language from translate
-            TaranslatorOnSearchResultPage.LangFromSelector.Click();
+            TaranslatorOnSearchResultPage.LangFromSelector.ClickAndCheck();
             TaranslatorOnSearchResultPage.SearchBox.SendKeys(langFromTransl);
-            TaranslatorOnSearchResultPage.FoundLang.Click();
+            TaranslatorOnSearchResultPage.FoundLang.ClickAndCheck();
 
             // Select language to translate
-            TaranslatorOnSearchResultPage.LangToSelector.Click();
+            TaranslatorOnSearchResultPage.LangToSelector.ClickAndCheck();
             TaranslatorOnSearchResultPage.SearchBox.SendKeys(langToTransl);
-            TaranslatorOnSearchResultPage.FoundLang.Click();
+            TaranslatorOnSearchResultPage.FoundLang.ClickAndCheck();
 
             // Verifiy result
             string actualResult = TaranslatorOnSearchResultPage.TranslatedField.Text;

@@ -5,40 +5,62 @@
     using OpenQA.Selenium.Support.UI;
     using static CommonUtils;
 
-    public class Waiter
+    public class Wait
     {
 
-        public static int defaultTimeout = GetIntSetting("defaultTimeout");
+        public static readonly int defaultTimeout = GetIntSetting("defaultTimeout");
+        public static readonly int pollingInterval = GetIntSetting("pollingInterval");
 
-        public static T WaitUntil<T>(Func<T, bool> condition, T input, int pollingInterval = 0, string message = "")
+        public object ObjectToReturn = null;
+        public int WebTimeoutElement = GetIntSetting("defaultTimeout");
+        public int PollingInterval = GetIntSetting("pollingInterval");
+        public Type IgnoreExceptionType  = null;
+        public string Message = "";
+
+
+        public bool Until(Func<bool> condition)
         {
-            if (pollingInterval == 0) pollingInterval = GetIntSetting("pollingInterval");
-            if (message == "") message = condition.ToString() + " did not happened in defaultTimeout: " + defaultTimeout.ToString();
-            IWait<T> wait = new DefaultWait<T>(input)
+            Func<object, bool> func = (x) => condition();
+            var result = WaitUntil(func);
+            if (result == null) return false;
+            else return true;                      
+        }
+
+        public IWebElement Until(Func<IWebElement, bool> condition, IWebElement webElement)
+        {
+            ObjectToReturn = webElement;
+            return WaitUntil(condition);
+        }
+
+        public T Until<T>(Func<T, bool> condition, T returning)
+        {
+            ObjectToReturn = returning;
+            return WaitUntil(condition);
+        }
+
+
+        private T WaitUntil<T>(Func<T, bool> condition)
+        {
+            if (Message == "") Message = condition.ToString() + " did not happened in defaultTimeout: " + defaultTimeout.ToString();
+            if (ObjectToReturn == null) ObjectToReturn = CurentPage.ActiveWebElement;
+            IWait<T> wait = new DefaultWait<T>((T)ObjectToReturn)
             {
-                Timeout = TimeSpan.FromSeconds(defaultTimeout),
-                Message = message,
-                PollingInterval = TimeSpan.FromMilliseconds(pollingInterval)
+                Timeout = TimeSpan.FromSeconds(WebTimeoutElement),
+                Message = Message,
+                PollingInterval = TimeSpan.FromMilliseconds(PollingInterval),
             };
-            wait.Until(condition);
-            return input;
-        }
-
-        public static IWebElement WaitForClikcable(IWebElement webElement)
-        {
-            bool isClickable()
+            if (IgnoreExceptionType != null) wait.IgnoreExceptionTypes(IgnoreExceptionType);
+            try
             {
-                try
-                {
-                   return webElement.Displayed && webElement.Enabled;
-                }
-                catch
-                {
-                   return false;
-                }                
+               wait.Until(condition);
             }
-            return WaitUntil(x => isClickable(), webElement, 1000, "Element is not become clikable in default timoute");
+            catch(TimeoutException)
+            {
+                return default(T);
+            }
+            return (T)ObjectToReturn;
 
         }
+
     }
 }

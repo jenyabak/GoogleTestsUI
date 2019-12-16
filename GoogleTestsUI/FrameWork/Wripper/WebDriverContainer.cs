@@ -17,7 +17,7 @@
                 ((ChromeOptions)driverOptions).AddArguments("--start-maximized");
                 ((ChromeOptions)driverOptions).AddArguments("--lang=uk");
                 WebDriver = new ChromeDriver((ChromeOptions)driverOptions);
-                WebDriver.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(Waiter.defaultTimeout);
+                WebDriver.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(Wait.defaultTimeout);
             }
 
             return WebDriver;

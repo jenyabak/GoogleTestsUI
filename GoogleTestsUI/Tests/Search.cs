@@ -1,9 +1,9 @@
 ﻿namespace GoogleTestUI
 {
     using NUnit.Framework;
-    using Keys = OpenQA.Selenium.Keys;
     using static WebDriverContainer;
-    using OpenQA.Selenium.Support.PageObjects;
+    using static CurentPage;
+
 
     [TestFixture]
     public class Search : BaseTest
@@ -18,7 +18,7 @@
 
             // Action
             mainPage.SearchField.SendKeys(textToSearch);
-            mainPage.SearchButton.Click();
+            mainPage.SearchButton.ClickAndCheck(() => TitleChanged());
 
             // Assert
             string actualResult = searchResultPage.SearchResults[searchLineNumber - 1].Text;
