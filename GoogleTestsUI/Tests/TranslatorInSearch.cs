@@ -7,7 +7,6 @@
     [TestFixture]
     public class TranslatorInSearch : BaseTest
     {
-        // NOTE currently this test works properly only for cyrillic locale
         [TestCase("Анг", "Укр", "This is UI test.", "Це тест на інтерфейс користувача.")]
         [TestCase("Укр", "Анг", "Це тест на інтерфейс користувача.", "This is a user interface test.")]
         public void TranslateTextOnSearchPage(string langFromTransl, string langToTransl, string textToTranslate, string expectedResult)
