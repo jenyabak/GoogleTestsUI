@@ -10,18 +10,18 @@
     {
         public static ChromeOptions StartOptions = new ChromeOptions();
 
-        public static IWebDriver Start()
-        {
-            var driver = new ChromeDriver(StartOptions);
-            driver.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(Wait.defaultTimeout);
-            return driver;
-        }
-
         static Chrome()
         {
             SupportedLocales.TryGetValue(GetSetting("browserLocale"), out string arg);
             StartOptions.AddArguments("--start-maximized");
             StartOptions.AddArguments("--lang=" + arg);
+        }
+
+        public static IWebDriver Start()
+        {
+            var driver = new ChromeDriver(StartOptions);
+            driver.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(Wait.defaultTimeout);
+            return driver;
         }
 
         private static Dictionary<string, string> SupportedLocales =>

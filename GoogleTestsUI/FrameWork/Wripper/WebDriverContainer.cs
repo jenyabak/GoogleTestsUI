@@ -6,14 +6,9 @@
     {
         public static IWebDriver WebDriver = null;
 
-        public static IWebDriver GetDriver(DriverOptions driverOptions = null)
+        public static IWebDriver GetDriver()
         {
-            if (WebDriver == null )
-            {
-                driverOptions = driverOptions ?? Chrome.StartOptions;
-                WebDriver = Chrome.Start();
-            }
-            return WebDriver;
+            return WebDriver = WebDriver ?? Chrome.Start();
         }
 
         public static void QuitWebdriver()
