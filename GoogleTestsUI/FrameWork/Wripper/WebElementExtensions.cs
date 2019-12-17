@@ -2,7 +2,7 @@
 {
     using OpenQA.Selenium;
     using System;
-    using static GoogleTestUI.CurrentPage;
+    using static CurrentPage;
 
     public static class IWebElementExtensions
     {

@@ -2,15 +2,15 @@
 {
     using OpenQA.Selenium.Support.PageObjects;
     using OpenQA.Selenium;
-    using static GoogleTestUI.WebDriverContainer;
     using System.Collections.Generic;
     using System.Linq;
 
 
-    public class SearchResultPage : BasePage
+    public class SearchResultsPage : BasePage
     {
-
-        public override string Title { get => WebDriver.Title; }
+        public SearchResultsPage(string baseURL = null) : base(baseURL)
+        {
+        }
 
         [FindsBy(How = How.XPath, Using = "//div[@class='g']")]
         public IList<IWebElement> SearchResults { get; set; }
@@ -25,6 +25,10 @@
 
         public class Translator : BasePage
         {
+            public Translator(string baseURL = null) : base(baseURL)
+            {
+            }
+
             [FindsBy(How = How.Id, Using = "tw-source-text-ta")]
             public IWebElement TranslateField { get; set; }
 

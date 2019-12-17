@@ -44,19 +44,21 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="FrameWork\Config\Chrome.cs" />
     <Compile Include="FrameWork\Utilities\CommonUtils.cs" />
     <Compile Include="FrameWork\Wripper\Waiter.cs" />
     <Compile Include="FrameWork\Wripper\WebDriverContainer.cs" />
-    <Compile Include="FrameWork\Wripper\WebDriverExtensions.cs" />
     <Compile Include="FrameWork\Wripper\WebElementExtensions.cs" />
     <Compile Include="PageObjects\BasePage.cs" />
     <Compile Include="PageObjects\CurrentPage.cs" />
-    <Compile Include="PageObjects\MainPage.cs" />
-    <Compile Include="PageObjects\SearchResultPage.cs" />
+    <Compile Include="PageObjects\SearchPage.cs" />
+    <Compile Include="PageObjects\SearchResultsPage.cs" />
+    <Compile Include="PageObjects\TranslatorPage.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Tests\BaseTest.cs" />
-    <Compile Include="Tests\Search.cs" />
-    <Compile Include="Tests\TranslatorInSearch.cs" />
+    <Compile Include="Tests\TestsSearch.cs" />
+    <Compile Include="Tests\TestsTranslator.cs" />
+    <Compile Include="Tests\TestsTranslatorInSearchPage.cs" />
   </ItemGroup>
   <ItemGroup>
     <PackageReference Include="NUnit">

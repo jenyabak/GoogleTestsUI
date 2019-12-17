@@ -1,8 +1,6 @@
 ﻿namespace GoogleTestUI
 {
-    using System;
     using OpenQA.Selenium;
-    using OpenQA.Selenium.Chrome;
 
     public class WebDriverContainer
     {
@@ -12,11 +10,8 @@
         {
             if (WebDriver == null )
             {
-                driverOptions = driverOptions ?? new ChromeOptions();
-                ((ChromeOptions)driverOptions).AddArguments("--start-maximized");
-                ((ChromeOptions)driverOptions).AddArguments("--lang=uk-UA");
-                WebDriver = new ChromeDriver((ChromeOptions)driverOptions);
-                WebDriver.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(Wait.defaultTimeout);
+                driverOptions = driverOptions ?? Chrome.StartOptions;
+                WebDriver = Chrome.Start();
             }
             return WebDriver;
         }
@@ -29,5 +24,7 @@
                 WebDriver = null;
             }
         }
+
+
     }
 }

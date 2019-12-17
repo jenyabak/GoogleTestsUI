@@ -2,14 +2,12 @@
 {
     using OpenQA.Selenium.Support.PageObjects;
     using OpenQA.Selenium;
-    using static GoogleTestUI.CommonUtils;
 
-    public class MainPage : BasePage
+    public class SearchPage : BasePage
     {
-        public MainPage()
+
+        public SearchPage(string baseUrl, string title = "Google") : base(baseUrl, title)
         {
-            Title = "Google";
-            URL = GetSetting("baseURL");
         }
 
         [FindsBy(How = How.XPath, Using = "//div/input[@type='text']")]
@@ -20,7 +18,8 @@
 
         public override bool PageLoadedCorrectly()
         {
-            return base.PageLoadedCorrectly() && SearchField.Displayed;
+            var wait = new Wait(){WebTimeoutElement = 2};
+            return base.PageLoadedCorrectly() && wait.Until(() => SearchField.Displayed); 
         }
 
     }

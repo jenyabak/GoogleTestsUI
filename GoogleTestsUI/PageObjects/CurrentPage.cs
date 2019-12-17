@@ -6,21 +6,24 @@
 
     public class CurrentPage : BasePage
     {
-        public static new string URL { get; set; }
-        public static new string Title { get; set; }
+        public static BasePage currentPage = null;
+
+        public CurrentPage(string baseURL = null, string title = null) : base(WebDriver.Url, WebDriver.Title)
+        {
+        }
+
         public static IWebElement ActiveWebElement { get => WebDriver.SwitchTo().ActiveElement(); }
 
         public static void RememberPageState()
         {
-            URL = WebDriver.Url;
-            Title = WebDriver.Title;
+            currentPage = new CurrentPage();
         }
 
-        public static bool TitleChanged(string titleFirst = "*", int waitingTime = 3, int poolingInt = 300)
+        public static bool isTitleChanged(string titleFirst = "*", int waitingTime = 3, int poolingInt = 300)
         {
             if (waitingTime == 0) waitingTime = defaultTimeout;
             if (poolingInt == 0) poolingInt = pollingInterval;
-            if (titleFirst == "*") titleFirst = Title;
+            if (titleFirst == "*") titleFirst = currentPage.Title;
             string title1 = titleFirst;
             string title2 = "";
             bool isTitlesDiff()

@@ -1,24 +1,25 @@
 ﻿namespace GoogleTestUI
 {
     using NUnit.Framework;
-    using static WebDriverContainer;
     using static CurrentPage;
 
-
     [TestFixture]
-    public class Search : BaseTest
+    public class TestsSearch : BaseTest
     {
+
         [TestCase("Selenium IDE export to C#", "Selenium IDE", 4)]
         [TestCase("Selenium IDE C#", "Code Export in Selenium IDE", 4)]
         public void SearchText(string textToSearch, string expectedResult, int searchLineNumber)
         {
+            SearchPage searchPage = new SearchPage("https://www.google.com/");
+            SearchResultsPage searchResultPage = new SearchResultsPage();
+
             // Arrange
-            MainPage mainPage = WebDriver.GetPage<MainPage>();
-            SearchResultPage searchResultPage = new SearchResultPage();
+            searchPage.Open();
 
             // Action
-            mainPage.SearchField.SendKeys(textToSearch);
-            mainPage.SearchButton.ClickAndCheck(() => TitleChanged());
+            searchPage.SearchField.SendKeys(textToSearch);
+            searchPage.SearchButton.ClickAndCheck(() => isTitleChanged());
 
             // Assert
             string actualResult = searchResultPage.SearchResults[searchLineNumber - 1].Text;
