@@ -19,7 +19,7 @@
             currentPage = new CurrentPage();
         }
 
-        public static bool isTitleChanged(string titleFirst = "*", int waitingTime = 3, int poolingInt = 300)
+        public static bool IsTitleChanged(string titleFirst = "*", int waitingTime = 3, int poolingInt = 300)
         {
             if (waitingTime == 0) waitingTime = defaultTimeout;
             if (poolingInt == 0) poolingInt = pollingInterval;

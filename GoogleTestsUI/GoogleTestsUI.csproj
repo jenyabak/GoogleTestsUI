@@ -46,7 +46,7 @@
   <ItemGroup>
     <Compile Include="FrameWork\Config\Chrome.cs" />
     <Compile Include="FrameWork\Utilities\CommonUtils.cs" />
-    <Compile Include="FrameWork\Wripper\Waiter.cs" />
+    <Compile Include="FrameWork\Wripper\Wait.cs" />
     <Compile Include="FrameWork\Wripper\WebDriverContainer.cs" />
     <Compile Include="FrameWork\Wripper\WebElementExtensions.cs" />
     <Compile Include="PageObjects\BasePage.cs" />

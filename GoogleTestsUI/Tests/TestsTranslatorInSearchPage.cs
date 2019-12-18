@@ -8,7 +8,6 @@
     [TestFixture]
     public class TestsTranslatorInSearchPage : BaseTest
     {
-        // NOTE currently these tests properly works only for UA locale in app.config
         [TestCase("Анг", "Укр", "This is UI test.", "Це тест на інтерфейс користувача.")]
         [TestCase("Укр", "Анг", "Це тест на інтерфейс користувача.", "This is a user interface test.")]
         public void TranslateTextOnSearchPage(string langFromTransl, string langToTransl, string textToTranslate, string expectedResult)
@@ -22,7 +21,7 @@
 
             // Gettin translator via search
             searchPage.SearchField.SendKeys("translate");
-            searchPage.SearchButton.ClickAndCheck(() => isTitleChanged());
+            searchPage.SearchButton.ClickAndCheck(() => IsTitleChanged());
 
             // Send text to translate
             translatorPage.TranslateField.SendKeys(textToTranslate);

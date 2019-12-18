@@ -32,12 +32,6 @@
             return WaitUntil(condition);
         }
 
-        public T Until<T>(Func<T, bool> condition, T returning)
-        {
-            ObjectToReturn = returning;
-            return WaitUntil(condition);
-        }
-
         private T WaitUntil<T>(Func<T, bool> condition)
         {
             if (Message == "") Message = condition.ToString() + " did not happened in defaultTimeout: " + defaultTimeout.ToString();

@@ -19,7 +19,7 @@
 
             // Action
             searchPage.SearchField.SendKeys(textToSearch);
-            searchPage.SearchButton.ClickAndCheck(() => isTitleChanged());
+            searchPage.SearchButton.ClickAndCheck(() => IsTitleChanged());
 
             // Assert
             string actualResult = searchResultPage.SearchResults[searchLineNumber - 1].Text;
