@@ -1,7 +1,7 @@
 # GoogleTestsUI
 Mini test automation framework for writing Google UI tests based on Selenium, NUnit, PageObject, PageFactory. 
 
-Этот код написан мной в ходе выполнения двух тестовых заданий в двух копаниях на вакансию AQA.
+Этот код написан мной в ходе выполнения двух тестовых заданий для двух копаний на вакансию AQA.
 
 Задача1: Сделать тест реализующий следующий сценарий:
 ∙        Браузер Chrome открывает стартовую страницу https://google.com/;
